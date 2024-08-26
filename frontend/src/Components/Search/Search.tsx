@@ -1,13 +1,13 @@
-import { useState } from "react";
+interface SearchProps {
+    onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    search: string|undefined;
+};
 
-type SearchProps = {};
-
-const Search: React.FC<SearchProps> = (props: SearchProps): JSX.Element => {
-    const [search, setSearch] = useState<string>("");
-    
+const Search: React.FC<SearchProps> = ({ onClick, handleChange, search }: SearchProps): JSX.Element => {
     return <div>
-        <input type="text" value={search} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)} />
-        <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log(event)}></button>
+        <input type="text" value={search} onChange={handleChange} />
+        <button onClick={onClick}>Search</button>
     </div>;
 };
 

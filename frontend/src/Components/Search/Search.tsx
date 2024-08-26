@@ -6,7 +6,8 @@ const Search: React.FC<SearchProps> = (props: SearchProps): JSX.Element => {
     const [search, setSearch] = useState<string>("");
     
     return <div>
-        <input type="text" value={search} onChange={(event) => setSearch(event.target.value)} />
+        <input type="text" value={search} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)} />
+        <button onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => console.log(event)}></button>
     </div>;
 };
 

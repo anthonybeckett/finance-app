@@ -13,7 +13,10 @@ const DeletePortfolio: React.FC<DeletePortfolioProps> = ({
         <>
             <form onSubmit={onPortfolioDelete}>
                 <input type="hidden" value={portfolioValue} />
-                <button>&times;</button>
+
+                <button className="block w-full py-3 text-white duration-200 border-2 rounded-lg bg-red-500 hover:text-red-500 hover:bg-white border-red-500">
+                    &times;
+                </button>
             </form>
         </>
     );

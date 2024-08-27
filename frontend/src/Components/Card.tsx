@@ -1,7 +1,6 @@
 import { SyntheticEvent } from "react";
-import { CompanySearch } from "../../Types/company";
-import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
-import "./Card.css";
+import { CompanySearch } from "../Types/company";
+import AddPortfolio from "./Portfolio/AddPortfolio";
 import { Link } from "react-router-dom";
 
 interface CardProps {

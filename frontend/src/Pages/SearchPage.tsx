@@ -1,11 +1,9 @@
 import { SyntheticEvent, useState } from "react";
 import { searchCompanies } from "../Api/Api";
-import Navbar from "../Components/Navbar/Navbar";
-import Hero from "../Components/Hero/Hero";
 import { CompanySearch } from "../Types/company";
-import Search from "../Components/Search/Search";
-import ListPortfolio from "../Components/Portfolio/ListPortfolio/ListPortfolio";
-import CardList from "../Components/CardList/CardList";
+import Search from "../Components/Search";
+import ListPortfolio from "../Components/Portfolio/ListPortfolio";
+import CardList from "../Components/CardList";
 
 interface SearchPageProps {}
 

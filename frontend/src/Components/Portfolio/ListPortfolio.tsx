@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import CardPortfolio from "../CardPortfolio/CardPortfolio";
+import CardPortfolio from "./CardPortfolio";
 
 interface ListPortfolioProps {
     portfolioValues: string[];

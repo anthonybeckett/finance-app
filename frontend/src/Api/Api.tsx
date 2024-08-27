@@ -1,5 +1,5 @@
 import { CompanySearch } from "../Types/company";
-import axios from 'axios';
+import axios from "axios";
 
 interface SearchResponse {
     data: CompanySearch[];
@@ -12,9 +12,9 @@ export const searchCompanies = async (query: string) => {
         );
 
         return data;
-    } catch(error: any) {
+    } catch (error: any) {
         console.log("Error message: ", error.message);
 
         return error.message;
     }
-}
+};

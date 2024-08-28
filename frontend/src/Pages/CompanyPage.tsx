@@ -5,6 +5,7 @@ import { getCompanyProfile } from "../Api/Api";
 import Sidebar from "../Components/Sidebar";
 import CompanyDashboard from "../Components/CompanyDashboard";
 import Tile from "../Components/Tile";
+import Spinner from "../Components/Spinner";
 
 interface CompanyPageProps {}
 
@@ -23,7 +24,7 @@ const CompanyPage: React.FC<CompanyPageProps> = (
         };
 
         getProfileInit();
-    }, []);
+    }, [ticker]);
 
     return (
         <>
@@ -42,7 +43,7 @@ const CompanyPage: React.FC<CompanyPageProps> = (
                     </CompanyDashboard>
                 </div>
             ) : (
-                <div>Company not found</div>
+                <Spinner />
             )}
         </>
     );

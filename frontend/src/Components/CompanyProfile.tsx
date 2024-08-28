@@ -4,6 +4,7 @@ import { CompanyKeyMetrics } from "../Types/company";
 import { useEffect, useState } from "react";
 import { getKeyMetrics } from "../Api/Api";
 import RatioList from "./RatioList";
+import Spinner from "./Spinner";
 
 interface CompanyProfileProps {}
 
@@ -22,7 +23,7 @@ const CompanyProfile: React.FC<CompanyProfileProps> = (
         };
 
         getCompanyKeyMetrics();
-    }, []);
+    }, [ticker]);
 
     return (
         <>
@@ -32,7 +33,7 @@ const CompanyProfile: React.FC<CompanyProfileProps> = (
                     config={CompanyProfileTableConfig}
                 />
             ) : (
-                <div>Loading</div>
+                <Spinner />
             )}
         </>
     );

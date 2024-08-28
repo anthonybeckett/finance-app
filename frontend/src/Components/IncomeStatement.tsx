@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CompanyIncomeStatement } from "../Types/company";
 import { getIncomeStatement } from "../Api/Api";
 import Table from "./Table";
+import Spinner from "./Spinner";
 
 interface IncomeStatementProps {}
 
@@ -23,7 +24,7 @@ const IncomeStatement: React.FC<IncomeStatementProps> = (
         };
 
         incomeStatementData();
-    }, []);
+    }, [ticker]);
 
     return (
         <>
@@ -35,7 +36,7 @@ const IncomeStatement: React.FC<IncomeStatementProps> = (
                     />
                 </>
             ) : (
-                <>Loading..</>
+                <Spinner />
             )}
         </>
     );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CompanyCashFlow } from "../Types/company";
 import { getCashFlowStatement } from "../Api/Api";
 import Table from "./Table";
+import Spinner from "./Spinner";
 
 interface CashFlowStatementProps {}
 
@@ -22,14 +23,14 @@ const CashFlowStatement: React.FC<CashFlowStatementProps> = (
         };
 
         fetchCashFlow();
-    }, []);
+    }, [ticker]);
 
     return (
         <>
             {cashFlowData ? (
                 <Table config={CashFlowStatementConfig} data={cashFlowData} />
             ) : (
-                <h1>No Results</h1>
+                <Spinner />
             )}
         </>
     );

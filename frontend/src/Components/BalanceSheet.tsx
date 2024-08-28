@@ -1,0 +1,38 @@
+import { useOutletContext } from "react-router-dom";
+import { BalanceSheetConfig } from "../Configs/TableConfigs/BalanceSheetConfig";
+import { CompanyBalanceSheet } from "../Types/company";
+import { useEffect, useState } from "react";
+import { getBalanceSheet } from "../Api/Api";
+import RatioList from "./RatioList";
+
+interface BalanceSheetProps {}
+
+const BalanceSheet: React.FC<BalanceSheetProps> = (
+    props: BalanceSheetProps
+): JSX.Element => {
+    const ticker = useOutletContext<string>();
+
+    const [balanceSheet, setBalanceSheet] = useState<CompanyBalanceSheet>();
+
+    useEffect(() => {
+        const getBalanceSheetData = async () => {
+            const value = await getBalanceSheet(ticker!);
+
+            setBalanceSheet(value?.data[0]);
+        };
+
+        getBalanceSheetData();
+    }, []);
+
+    return (
+        <>
+            {balanceSheet ? (
+                <RatioList config={BalanceSheetConfig} data={balanceSheet} />
+            ) : (
+                <h1>Company Not Found</h1>
+            )}
+        </>
+    );
+};
+
+export default BalanceSheet;

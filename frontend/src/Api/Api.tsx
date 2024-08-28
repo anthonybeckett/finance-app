@@ -1,4 +1,4 @@
-import { CompanyProfile, CompanySearch } from "../Types/company";
+import { CompanyKeyMetrics, CompanyProfile, CompanySearch } from "../Types/company";
 import axios from "axios";
 
 interface SearchResponse {
@@ -28,5 +28,17 @@ export const getCompanyProfile = async (query: string) => {
         return data;
     } catch(error: any) {
         console.error("Error thrown in getCompanyProfile", error.message);
+    }
+}
+
+export const getKeyMetrics = async (query: string) => {
+    try {
+        const data = await axios.get<CompanyKeyMetrics[]>(
+            `https://financialmodelingprep.com/api/v3/key-metrics-ttm/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+        );
+
+        return data;
+    } catch(error: any) {
+        console.error("Error thrown in getKeyMetrics", error.message);
     }
 }

@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
             {path: "", element: <HomePage />},
             {path: "search", element: <SearchPage />},
             {
-                path: "company:ticker", 
+                path: "company/:ticker", 
                 element: <CompanyPage />,
                 children: [
                     {path: "company-profile", element: <CompanyProfile />},

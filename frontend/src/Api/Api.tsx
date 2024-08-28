@@ -5,26 +5,29 @@ interface SearchResponse {
     data: CompanySearch[];
 }
 
-// Todo: refactor these methods into one editable function and set up axios more
+const client = axios.create({
+    baseURL: "https://financialmodelingprep.com/api/v3",
+    params: {
+        "apikey": process.env.REACT_APP_API_KEY,
+    },
+});
 
 export const searchCompanies = async (query: string) => {
     try {
-        const data = await axios.get<SearchResponse>(
-            `https://financialmodelingprep.com/api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${process.env.REACT_APP_API_KEY}`
+        const data = await client.get<SearchResponse>(
+            `/search?query=${query}&limit=10&exchange=NASDAQ`
         );
 
         return data;
     } catch (error: any) {
         console.log("Error: ", error.message);
-
-        return error.message;
     }
 };
 
 export const getCompanyProfile = async (query: string) => {
     try {
-        const data = await axios.get<CompanyProfile[]>(
-            `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+        const data = await client.get<CompanyProfile[]>(
+            `/profile/${query}`
         );
 
         return data;
@@ -35,8 +38,8 @@ export const getCompanyProfile = async (query: string) => {
 
 export const getKeyMetrics = async (query: string) => {
     try {
-        const data = await axios.get<CompanyKeyMetrics[]>(
-            `https://financialmodelingprep.com/api/v3/key-metrics-ttm/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+        const data = await client.get<CompanyKeyMetrics[]>(
+            `/key-metrics-ttm/${query}`
         );
 
         return data;
@@ -47,8 +50,8 @@ export const getKeyMetrics = async (query: string) => {
 
 export const getIncomeStatement = async (query: string) => {
     try {
-        const data = await axios.get<CompanyIncomeStatement[]>(
-            `https://financialmodelingprep.com/api/v3/income-statement/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+        const data = await client.get<CompanyIncomeStatement[]>(
+            `/income-statement/${query}?limit=40`
         );
 
         return data;
@@ -59,8 +62,8 @@ export const getIncomeStatement = async (query: string) => {
 
 export const getBalanceSheet = async (query: string) => {
     try {
-        const data = await axios.get<CompanyBalanceSheet[]>(
-            `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+        const data = await client.get<CompanyBalanceSheet[]>(
+            `/balance-sheet-statement/${query}?limit=40`
         );
 
         return data;
@@ -71,8 +74,8 @@ export const getBalanceSheet = async (query: string) => {
 
 export const getCashFlowStatement = async (query: string) => {
     try {
-        const data = await axios.get<CompanyCashFlow[]>(
-            `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+        const data = await client.get<CompanyCashFlow[]>(
+            `/cash-flow-statement/${query}?limit=40`
         );
 
         return data;

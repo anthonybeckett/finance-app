@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router";
-import { CashFlowStatementConfig } from "../Configs/TableConfigs/CashFlowStatementConfig";
+import { CashFlowStatementConfig } from "../Configs/CashFlowStatementConfig";
 import { useEffect, useState } from "react";
 import { CompanyCashFlow } from "../Types/company";
 import { getCashFlowStatement } from "../Api/Api";

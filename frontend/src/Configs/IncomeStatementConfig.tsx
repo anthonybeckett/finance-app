@@ -1,5 +1,5 @@
-import { formatLargeMonetaryNumber, formatRatio } from "../../Helpers/NumberFormatter";
-import { CompanyIncomeStatement } from "../../Types/company";
+import { formatLargeMonetaryNumber, formatRatio } from "../Helpers/NumberFormatter";
+import { CompanyIncomeStatement } from "../Types/company";
 
 export const IncomeStatementConfig = [
     {

@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import { CompanyProfileTableConfig } from "../Configs/TableConfigs/CompanyProfileTableConfig";
+import { CompanyProfileConfig } from "../Configs/CompanyProfileConfig";
 import { CompanyKeyMetrics } from "../Types/company";
 import { useEffect, useState } from "react";
 import { getKeyMetrics } from "../Api/Api";
@@ -30,7 +30,7 @@ const CompanyProfile: React.FC<CompanyProfileProps> = (
             {companyData ? (
                 <RatioList
                     data={companyData}
-                    config={CompanyProfileTableConfig}
+                    config={CompanyProfileConfig}
                 />
             ) : (
                 <Spinner />

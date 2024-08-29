@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import { BalanceSheetConfig } from "../Configs/TableConfigs/BalanceSheetConfig";
+import { BalanceSheetConfig } from "../Configs/BalanceSheetConfig";
 import { CompanyBalanceSheet } from "../Types/company";
 import { useEffect, useState } from "react";
 import { getBalanceSheet } from "../Api/Api";

@@ -1,7 +1,7 @@
-import { formatLargeNonMonetaryNumber, formatRatio } from "../../Helpers/NumberFormatter";
-import { CompanyKeyMetrics } from "../../Types/company";
+import { formatLargeNonMonetaryNumber, formatRatio } from "../Helpers/NumberFormatter";
+import { CompanyKeyMetrics } from "../Types/company";
 
-export const CompanyProfileTableConfig = [
+export const CompanyProfileConfig = [
     {
         label: "Market Cap",
         render: (company: CompanyKeyMetrics) =>

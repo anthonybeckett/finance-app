@@ -1,38 +1,70 @@
-import { CompanyCashFlow } from "../../Types/company";
+import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatter";
+import { CompanyBalanceSheet, CompanyCashFlow } from "../../Types/company";
 
 export const BalanceSheetConfig = [
     {
-        label: "Date",
-        render: (company: CompanyCashFlow) => company.date,
+        label: <div className="font-bold">Total Assets</div>,
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.totalAssets),
     },
     {
-        label: "Operating Cashflow",
-        render: (company: CompanyCashFlow) => company.operatingCashFlow,
+        label: "Current Assets",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.totalCurrentAssets),
     },
     {
-        label: "Investing Cashflow",
-        render: (company: CompanyCashFlow) =>
-            company.netCashUsedForInvestingActivites,
+        label: "Total Cash",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.cashAndCashEquivalents),
     },
     {
-        label: "Financing Cashflow",
-        render: (company: CompanyCashFlow) =>
-            company.netCashUsedProvidedByFinancingActivities,
+        label: "Property & equipment",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.propertyPlantEquipmentNet),
     },
     {
-        label: "Cash At End of Period",
-        render: (company: CompanyCashFlow) => company.cashAtEndOfPeriod,
+        label: "Intangible Assets",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.intangibleAssets),
     },
     {
-        label: "CapEX",
-        render: (company: CompanyCashFlow) => company.capitalExpenditure,
+        label: "Long Term Debt",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.longTermDebt),
     },
     {
-        label: "Issuance Of Stock",
-        render: (company: CompanyCashFlow) => company.commonStockIssued,
+        label: "Total Debt",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.otherCurrentLiabilities),
     },
     {
-        label: "Free Cash Flow",
-        render: (company: CompanyCashFlow) => company.freeCashFlow,
+        label: <div className="font-bold">Total Liabilites</div>,
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.totalLiabilities),
+    },
+    {
+        label: "Current Liabilities",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.totalCurrentLiabilities),
+    },
+    {
+        label: "Long-Term Debt",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.longTermDebt),
+    },
+    {
+        label: "Long-Term Income Taxes",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.otherLiabilities),
+    },
+    {
+        label: "Stakeholder's Equity",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.totalStockholdersEquity),
+    },
+    {
+        label: "Retained Earnings",
+        render: (company: CompanyBalanceSheet) =>
+            formatLargeMonetaryNumber(company.retainedEarnings),
     },
 ];

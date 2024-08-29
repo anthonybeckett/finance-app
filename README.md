@@ -19,3 +19,11 @@ cd ./frontend
 
 npm start
 ```
+
+## Back End  
+
+To start the backend in development mode change into the `api` folder and run the following  
+
+```bash
+dotnet run watch
+```

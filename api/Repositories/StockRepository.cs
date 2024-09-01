@@ -29,7 +29,8 @@ namespace api.Repositories
         {
             var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (stockModel == null) {
+            if (stockModel == null)
+            {
                 return null;
             }
 
@@ -44,12 +45,22 @@ namespace api.Repositories
         {
             var stocks = _context.Stocks.Include(c => c.Comments).AsQueryable();
 
-            if (! string.IsNullOrWhiteSpace(query.CompanyName)) {
+            if (!string.IsNullOrWhiteSpace(query.CompanyName))
+            {
                 stocks = stocks.Where(s => s.CompanyName.Contains(query.CompanyName));
             }
 
-            if (! string.IsNullOrWhiteSpace(query.Symbol)) {
+            if (!string.IsNullOrWhiteSpace(query.Symbol))
+            {
                 stocks = stocks.Where(s => s.Symbol.Contains(query.Symbol));
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
+                }
             }
 
             return await stocks.ToListAsync();
@@ -69,7 +80,8 @@ namespace api.Repositories
         {
             var existingStock = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (existingStock == null) {
+            if (existingStock == null)
+            {
                 return null;
             }
 

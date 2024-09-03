@@ -27,3 +27,9 @@ To start the backend in development mode change into the `api` folder and run th
 ```bash
 dotnet run watch
 ```
+
+To migrate the database
+
+```bash
+dotnet ef database update
+```

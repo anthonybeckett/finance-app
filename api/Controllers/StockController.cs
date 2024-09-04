@@ -10,7 +10,7 @@ namespace api.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
-        public readonly IStockRepository _stockRepository;
+        private readonly IStockRepository _stockRepository;
 
         public StockController(IStockRepository stockRepository)
         {

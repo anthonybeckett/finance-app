@@ -7,6 +7,7 @@ import CompanyProfile from "../Components/CompanyProfile";
 import IncomeStatement from "../Components/IncomeStatement";
 import BalanceSheet from "../Components/BalanceSheet";
 import CashFlowStatement from "../Components/CashFlowStatement";
+import LoginPage from "../Pages/Auth/LoginPage";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             {path: "", element: <HomePage />},
+            {path: "login", element: <LoginPage />},
             {path: "search", element: <SearchPage />},
             {
                 path: "company/:ticker", 

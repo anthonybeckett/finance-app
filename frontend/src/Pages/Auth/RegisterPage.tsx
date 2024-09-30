@@ -3,30 +3,32 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../Context/useAuth";
 import { useForm } from "react-hook-form";
 
-type LoginPageProps = {};
+type RegisterPageProps = {};
 
-type LoginFormInputs = {
+type RegisterFormInputs = {
+    email: string;
     userName: string;
     password: string;
 };
 
 const validation = Yup.object().shape({
+    email: Yup.string().required("Email is required").email(),
     userName: Yup.string().required("Username is required"),
     password: Yup.string().required("Password is required"),
 });
 
-const LoginPage: React.FC<LoginPageProps> = (
-    props: LoginPageProps
+const RegisterPage: React.FC<RegisterPageProps> = (
+    props: RegisterPageProps
 ): JSX.Element => {
-    const { loginUser } = useAuth();
+    const { registerUser } = useAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<LoginFormInputs>({ resolver: yupResolver(validation) });
+    } = useForm<RegisterFormInputs>({ resolver: yupResolver(validation) });
 
-    const handleLogin = (form: LoginFormInputs) => {
-        loginUser(form.userName, form.password);
+    const handleLogin = (form: RegisterFormInputs) => {
+        registerUser(form.email, form.userName, form.password);
     };
 
     return (
@@ -37,7 +39,31 @@ const LoginPage: React.FC<LoginPageProps> = (
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign in to your account
                         </h1>
-                        <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(handleLogin)}>
+                        <form
+                            className="space-y-4 md:space-y-6"
+                            onSubmit={handleSubmit(handleLogin)}
+                        >
+                            <div>
+                                <label
+                                    htmlFor="email"
+                                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Email"
+                                    {...register("email")}
+                                />
+                                {errors.email ? (
+                                    <p>{errors.email.message}</p>
+                                ) : (
+                                    ""
+                                )}
+                            </div>
+
                             <div>
                                 <label
                                     htmlFor="username"
@@ -52,8 +78,13 @@ const LoginPage: React.FC<LoginPageProps> = (
                                     placeholder="Username"
                                     {...register("userName")}
                                 />
-                                { errors.userName ? <p>{errors.userName.message}</p> : '' }
+                                {errors.userName ? (
+                                    <p>{errors.userName.message}</p>
+                                ) : (
+                                    ""
+                                )}
                             </div>
+
                             <div>
                                 <label
                                     htmlFor="password"
@@ -66,9 +97,13 @@ const LoginPage: React.FC<LoginPageProps> = (
                                     id="password"
                                     placeholder="••••••••"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    { ...register("password") }
+                                    {...register("password")}
                                 />
-                                { errors.password ? <p>{errors.password.message}</p> : '' }
+                                {errors.password ? (
+                                    <p>{errors.password.message}</p>
+                                ) : (
+                                    ""
+                                )}
                             </div>
                             <div className="flex items-center justify-between">
                                 <a
@@ -82,7 +117,7 @@ const LoginPage: React.FC<LoginPageProps> = (
                                 type="submit"
                                 className="w-full text-black bg-lightGreen hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                             >
-                                Sign in
+                                Register
                             </button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Don’t have an account yet?{" "}
@@ -101,4 +136,4 @@ const LoginPage: React.FC<LoginPageProps> = (
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

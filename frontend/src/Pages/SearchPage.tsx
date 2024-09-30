@@ -31,7 +31,7 @@ const SearchPage: React.FC<SearchPageProps> = (
 
         if (typeof result === "string") {
             setServerError(result);
-        } else if (Array.isArray(result.data)) {
+        } else if (result && Array.isArray(result?.data)) {
             setSearchResult(result.data);
         }
     };

@@ -1,5 +1,5 @@
 import { formatLargeMonetaryNumber } from "../Helpers/NumberFormatter";
-import { CompanyBalanceSheet, CompanyCashFlow } from "../Types/company";
+import { CompanyBalanceSheet } from "../Types/company";
 
 export const BalanceSheetConfig = [
     {
